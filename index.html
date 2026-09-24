@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // Catch and suppress empty or benign sandboxed iframe errors early before modules load
+      window.addEventListener('error', function(e) {
+        if (!e.message || e.message === 'Script error.' || e.message === 'Uncaught ' || e.message.trim() === 'Uncaught') {
+          e.stopImmediatePropagation();
+          e.preventDefault();
+          return true;
+        }
+      }, true);
+      window.addEventListener('unhandledrejection', function(e) {
+        if (!e.reason || e.reason === '' || typeof e.reason === 'undefined') {
+          e.stopImmediatePropagation();
+          e.preventDefault();
+          return true;
+        }
+        var msg = String((e.reason && e.reason.message) || e.reason || '');
+        if (msg === 'Uncaught ' || msg === '' || msg.indexOf('NotAllowedError') !== -1 || msg.indexOf('clipboard') !== -1) {
+          e.stopImmediatePropagation();
+          e.preventDefault();
+          return true;
+        }
+      }, true);
+    </script>
+    <title>PolyStudy – Polytechnic Diploma Notes & PDF Platform</title>
+    <meta name="description" content="Find notes, PDFs, important questions, and educational study material for polytechnic and diploma engineering students. Study Smarter. Learn Better." />
+    <meta property="og:title" content="PolyStudy – Polytechnic Diploma Notes & PDF Platform" />
+    <meta property="og:description" content="Find notes, PDFs, important questions, and educational study material for polytechnic and diploma engineering students. Study Smarter. Learn Better." />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="PolyStudy" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="PolyStudy – Polytechnic Diploma Notes & PDF Platform" />
+    <meta name="twitter:description" content="Find notes, PDFs, important questions, and educational study material for polytechnic and diploma engineering students." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "PolyStudy",
+      "description": "Educational platform providing notes, PDFs, and study materials for Polytechnic and Diploma students.",
+      "url": "https://polystudy.edu"
+    }
+    </script>
+  </head>
+  <body class="bg-slate-50 text-slate-900 font-sans antialiased min-h-screen selection:bg-indigo-100 selection:text-indigo-900">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

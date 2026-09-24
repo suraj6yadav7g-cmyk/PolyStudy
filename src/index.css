@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* Custom scrollbar for pleasant PDF and preview reading */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* 3D Realistic Book Flip Page Turn Animations */
+.book-perspective {
+  perspective: 2000px;
+}
+
+@keyframes pageFlipNext {
+  0% {
+    transform: rotateY(0deg);
+    transform-origin: left center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow: -15px 10px 25px -5px rgba(0, 0, 0, 0.25);
+  }
+  100% {
+    transform: rotateY(-90deg);
+    transform-origin: left center;
+    opacity: 0.15;
+  }
+}
+
+@keyframes pageFlipPrev {
+  0% {
+    transform: rotateY(0deg);
+    transform-origin: right center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow: 15px 10px 25px -5px rgba(0, 0, 0, 0.25);
+  }
+  100% {
+    transform: rotateY(90deg);
+    transform-origin: right center;
+    opacity: 0.15;
+  }
+}
+
+@keyframes pageArriveNext {
+  0% {
+    transform: rotateY(90deg);
+    transform-origin: left center;
+    opacity: 0.2;
+  }
+  100% {
+    transform: rotateY(0deg);
+    transform-origin: left center;
+    opacity: 1;
+  }
+}
+
+@keyframes pageArrivePrev {
+  0% {
+    transform: rotateY(-90deg);
+    transform-origin: right center;
+    opacity: 0.2;
+  }
+  100% {
+    transform: rotateY(0deg);
+    transform-origin: right center;
+    opacity: 1;
+  }
+}
+
+.animate-page-flip-next {
+  animation: pageFlipNext 0.38s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-page-flip-prev {
+  animation: pageFlipPrev 0.38s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-page-arrive-next {
+  animation: pageArriveNext 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-page-arrive-prev {
+  animation: pageArrivePrev 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Book spine shadow overlay */
+.book-spine-gradient {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.02) 6%, transparent 12%);
+}
+.book-page-edge {
+  box-shadow: -1px 0 0 rgba(0, 0, 0, 0.05),
+              2px 0 5px rgba(0, 0, 0, 0.04),
+              5px 5px 20px rgba(0, 0, 0, 0.12),
+              0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+

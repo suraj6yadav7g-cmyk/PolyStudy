@@ -1,0 +1,6 @@
+{
+  "name": "PolyStudy - Polytechnic Diploma Notes & PDF Platform",
+  "description": "Find notes, PDFs, important questions, and educational study material for polytechnic and diploma engineering students.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
